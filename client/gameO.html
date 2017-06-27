@@ -1,0 +1,65 @@
+<head>
+    <title>GameO</title>
+</head>
+<p id="header">GameO</p>
+<div id="messages"></div>
+<canvas id="ctx" width="500px" height="500px"></canvas>
+<style>
+    #header{
+        font-family: monospace;
+        font-size: 64px;
+    }
+    #messages p{
+        font-family: monospace;
+        font-size: 32px;
+    }
+    #ctx{
+        border: 1px solid;
+    }
+</style>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script>
+    var ctx = document.getElementById("ctx").getContext("2d");
+    ctx.font = "32px Monospace";
+    var name = prompt("What's your name?");
+    var socket = io();
+    socket.emit("connected",{
+       user: name
+    });
+    socket.on("name",function(data){
+        name = data.name;
+    });
+    socket.on("server", function(data){
+       document.getElementById("messages").innerHTML += "<p>Server: " + data.message + "</p>";
+       window.scrollTo(0,document.body.scrollHeight);
+    });
+    socket.on("positions",function(data){
+        ctx.clearRect(0,0,500,500);
+        for(var position in data.positions){
+            console.log(data.positions[position][0],data.positions[position][1].x,data.positions[position][1].y);
+            ctx.fillText(data.positions[position][0],data.positions[position][1].x,data.positions[position][1].y);
+        }
+    });
+    document.onkeydown = function(event){
+        if(event.keycode === 87 || event.keycode === 38){
+            socket.emit("keyPress",{input: "up", state: true});
+        } else if(event.keyCode === 83 || event.keycode === 40){
+            socket.emit("keyPress",{input: "down", state: true});
+        } else if(event.keyCode === 65 || event.keycode === 37){
+            socket.emit("keyPress",{input: "left", state: true});
+        } else if(event.keyCode === 68 || event.keycode === 39){
+            socket.emit("keyPress",{input: "right", state: true});
+        }
+    };
+    document.onkeyup = function(event){
+        if(event.keyCode == 87 || event.keycode === 38){
+            socket.emit("keyPress",{input: "up", state: false});
+        } else if(event.keyCode == 83 || event.keycode === 40){
+            socket.emit("keyPress",{input: "down", state: false});
+        } else if(event.keyCode == 65 || event.keycode === 37){
+            socket.emit("keyPress",{input: "left", state: false});
+        } else if(event.keyCode == 68 || event.keycode === 39){
+            socket.emit("keyPress",{input: "right", state: false});
+        }
+    };
+</script>

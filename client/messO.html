@@ -1,0 +1,59 @@
+<head>
+    <title>MessO</title>
+    <meta charset='utf-8'>
+</head>
+<p id="header">MessO</p>
+<div id="messages"></div>
+<form onsubmit="send(); return false;">
+    <p id="myMessage">My Message</p><input type="text" id="text"></input>
+    <p id="send"><input type="submit" value="Send"></input></p>
+</form>
+<style>
+    #header{
+        font-family: monospace;
+        font-size: 64px;
+    }
+    #messages p{
+        font-family: monospace;
+        font-size: 32px;
+    }
+    #myMessage{
+        font-family: monospace;
+        font-size: 32px;
+        display: inline;
+    }
+    #send{
+        display: inline;
+    }
+    #send input{
+        font-family: monospace;
+        font-size: 32px;
+    }
+</style>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script>
+    var name = prompt("What's your name?");
+    var socket = io();
+    var text = document.getElementById("text");
+    socket.emit("connected",{
+       user: name
+    });
+    socket.on("name",function(data){
+        name = data.name;
+    });
+    function send(){
+        var contents = text.value;
+        socket.emit("sent",{
+            sender: name,
+            message: contents
+        });
+    }
+    socket.on("received", function(data){
+       document.getElementById("messages").innerHTML += "<p>"+ data.sender + ": " + data.message + "</p>";
+       window.scrollTo(0,document.body.scrollHeight);
+    });
+    socket.on("server", function(data){
+       document.getElementById("messages").innerHTML += "<p>Server: " + data.message + "</p>";
+       window.scrollTo(0,document.body.scrollHeight);
+    });
+</script>
