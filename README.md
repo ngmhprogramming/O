@@ -6,19 +6,19 @@ This projects are meant to teach myself programming and dealing with servers. Th
 
 # Projects
 1. MessO
-  *  An online messenger with messages in real time.
-  *  Status: Functional. Updates to be made. In version 0.0.2
-  *  Changelog:
-  *   v0.0.0 Added basic chat system
-  *   v0.0.1 Added names, connection and disconnection alerts
-  *   v0.0.2 Added Emoji support
+  * An online messenger with messages in real time.
+  * Status: Functional. Updates to be made. In version 0.0.2
+  * Changelog:
+    * v0.0.0 Added basic chat system
+    * v0.0.1 Added names, connection and disconnection alerts
+    * v0.0.2 Added Emoji support
 2. GameO
-  *  An online game which is similar to [agar.io](http://agar.io) and [diep.io](http://diep.io) and many online games.
-  *  Status: Not functional. Updates to be made. In version 0.0.2
-  *  Changelog:
-  *   v0.0.0 People can connect
-  *   v0.0.1 People's names show up on the canvas
-  *   v0.0.2 People can move around, though it is half functional
+  * An online game which is similar to [agar.io](http://agar.io) and [diep.io](http://diep.io) and many online games.
+  * Status: Not functional. Updates to be made. In version 0.0.2
+  * Changelog:
+    * v0.0.0 People can connect
+    * v0.0.1 People's names show up on the canvas
+    * v0.0.2 People can move around, though it is half functional
   
 # Installation Instructions
 It is very simple to get this project running on your computer.
