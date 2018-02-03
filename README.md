@@ -1,7 +1,7 @@
-# MessO
-This currently has **a** project which is meant to be in real time online.
+# O
+This currently has **two** projects which are meant to be in real time online.
 
-# Project
+# Projects
 MessO
   * An online messenger with messages in real time.
   * Status: Functional. Updates to be made. In version 0.0.2
@@ -9,6 +9,10 @@ MessO
     * v0.0.0 Added basic chat system
     * v0.0.1 Added names, connection and disconnection alerts
     * v0.0.2 Added Emoji support
+    
+GameO
+  * An online game with movement in real time.
+  * Not funcional.
   
 # Installation Instructions
 It is very simple to get this project running on your computer.
