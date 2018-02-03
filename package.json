@@ -1,10 +1,10 @@
 {
   "name": "websockets",
   "version": "1.0.0",
-  "description": "Projects which are meant to be used in real time online. Built with node.js, socket.io and Express.",
+  "description": "A WebSockets program written for testing",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"No tests here\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Toom",
   "license": "ISC"
